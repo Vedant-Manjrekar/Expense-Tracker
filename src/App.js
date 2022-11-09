@@ -1,41 +1,34 @@
-import React from 'react';
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import React, { useEffect, useState } from 'react';
+import { ChakraProvider, theme } from '@chakra-ui/react';
+import MainComp from './Components/MainComp';
+import '../src/App.css';
+import { ExpenseProvider } from './context/context';
+import LoginPage from './Components/LoginPage';
+import { auth } from './firebase/firebase';
 
 function App() {
+  const [mainUser, setMainUser] = useState('');
+
+  // * getting user data from firebase
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        setMainUser(user);
+      } else {
+        setMainUser('');
+      }
+    });
+
+    return unsubscribe;
+  }, [mainUser]);
+
   return (
-    <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
-      </Box>
-    </ChakraProvider>
+    <ExpenseProvider>
+      <ChakraProvider theme={theme}>
+        {mainUser ? <MainComp /> : <LoginPage />}
+        {/* <MainComp /> */}
+      </ChakraProvider>
+    </ExpenseProvider>
   );
 }
 

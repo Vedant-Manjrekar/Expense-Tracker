@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Overpass:wght@400;700&family=PT+Sans:wght@700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.doughnut{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 12rem;
+    width: 12rem;
+}
+
+.main{
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("./assets/money-tracker-bg1.jpeg");
+    background-size: contain;
+    background-repeat: repeat;
+}
+
+.loginImg{
+   background-size: justify;
+   height: 80vh;
+   width: stretch;
+}
+
+.signup{
+    margin-top: 2rem;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.signout{
+    position: fixed;
+    color: white;
+    width: stretch;
+    text-align: right;
+    margin: .5rem 1rem;
+    cursor: pointer;
+}
+
+.delete:hover{
+    color: red;
+    cursor: pointer;
+}
