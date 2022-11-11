@@ -24,7 +24,7 @@ function Main_Heading() {
 
   return (
     <>
-      <Box display="flex" justifyContent="space-around" alignItems="center">
+      <Box display="flex" justifyContent="space-between" alignItems="center">
         <Heading size="md">Expense Tracker</Heading>
 
         <Avatar fontSize=".5rem" src={mainUser} />
@@ -33,7 +33,7 @@ function Main_Heading() {
       <Heading
         fontWeight="300"
         fontSize="2vh"
-        pl="1.3rem"
+        // pl={{ base: '1.3rem', md: '1.3rem', lg: '1.3rem' }}
         transform="translateY(-0.8rem)"
         pt="1"
         color="gray.500"

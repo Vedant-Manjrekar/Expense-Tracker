@@ -55,6 +55,7 @@ export const ExpenseProvider = ({ children }) => {
 
   // * Firebase function for logging with google oauth.
   function LoginUsingGoogle() {
+    console.log('Loading..');
     signInWithPopup(authentication, provider)
       .then(res => {
         // const credential = GoogleAuthProvider.credentialFromResult(res);

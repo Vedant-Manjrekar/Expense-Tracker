@@ -81,8 +81,8 @@ function MainComp() {
           }}
           h={{
             base: '-webkit-fill-available',
-            md: '80vh',
-            lg: '80vh',
+            md: '85vh',
+            lg: '83vh',
           }}
           gridColumn={{ lg: 2 }}
         >
