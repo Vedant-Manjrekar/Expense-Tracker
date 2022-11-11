@@ -14,6 +14,10 @@
     width: 12rem;
 }
 
+.login{
+    height: 100vh;
+}
+
 .main{
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("./assets/money-tracker-bg1.jpeg");
     background-size: contain;
@@ -24,10 +28,14 @@
    background-size: justify;
    height: 80vh;
    width: stretch;
+   box-shadow: 0 0 200px rgba(0,0,0,0.9) inset;
+   
 }
 
 .signup{
     margin-top: 2rem;
+    margin: auto;
+    position: relative;
     font-family: 'PT Sans', sans-serif;
 }
 
