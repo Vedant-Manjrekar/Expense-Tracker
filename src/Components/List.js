@@ -28,7 +28,7 @@ function List({ type, category, amount, date, id }) {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
         setPhotoUrl(user.photoURL);
-        setUser(user.displayName);
+        setUser(user.email);
       }
 
       return unsubscribe;

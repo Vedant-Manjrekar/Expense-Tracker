@@ -24,7 +24,7 @@ function App() {
 
   return (
     <ExpenseProvider>
-      <ChakraProvider theme={theme}>
+      <ChakraProvider>
         {mainUser ? <MainComp /> : <LoginPage />}
         {/* <MainComp /> */}
       </ChakraProvider>

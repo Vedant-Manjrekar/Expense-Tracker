@@ -16,6 +16,7 @@
 
 .login{
     height: 100vh;
+    position: sticky;
 }
 
 .main{
@@ -51,4 +52,8 @@
 .delete:hover{
     color: red;
     cursor: pointer;
+}
+
+.form{
+    display: grid;
 }

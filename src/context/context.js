@@ -32,7 +32,7 @@ export const ExpenseProvider = ({ children }) => {
     const unsub = auth.onAuthStateChanged(user1 => {
       setUserReal(user1);
       console.log(user1);
-      getData(user1.displayName);
+      getData(user1.email);
     });
     return () => unsub;
   }, []);

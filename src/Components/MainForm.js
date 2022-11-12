@@ -145,7 +145,7 @@ function MainForm() {
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       if (user) {
-        setUser(user.displayName);
+        setUser(user.email);
       }
     });
   }, [user]);
