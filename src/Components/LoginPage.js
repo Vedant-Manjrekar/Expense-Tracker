@@ -88,6 +88,7 @@ function LoginPage() {
           // flexDirection="column"
           justifyContent="space-around"
           backgroundColor="#f4f6f9"
+          w={{ base: '100vw', sm: 'auto', md: 'auto', lg: 'auto' }}
         >
           <Text
             fontSize="2xl"
@@ -99,7 +100,7 @@ function LoginPage() {
           </Text>
           <Grid
             h="50vh"
-            w={{ base: '41vw', md: '41vw', lg: '27vw' }}
+            w={{ base: '71vw', md: '41vw', lg: '27vw' }}
             justifyContent="space-evenly"
             alignItems="center"
             boxShadow="20px 20px 60px #bebebe,
