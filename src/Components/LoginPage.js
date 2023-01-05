@@ -75,7 +75,7 @@ function LoginPage() {
         m="5vw"
         h="80vh"
         textAlign="center"
-        boxShadow=" 0px 3px 23px 0px gray"
+        boxShadow="0px 3px 25px -7px grey"
         gridTemplateColumns={{ base: '1fr', md: '1fr', lg: '1fr 1fr' }}
         borderTopLeftRadius="12px"
       >
@@ -88,7 +88,7 @@ function LoginPage() {
           // flexDirection="column"
           justifyContent="space-around"
           backgroundColor="#f4f6f9"
-          w={{ base: '100vw', sm: 'auto', md: 'auto', lg: 'auto' }}
+          w={{ base: '90vw', sm: 'auto', md: '69vw', lg: 'auto' }}
         >
           <Text
             fontSize="2xl"
@@ -100,7 +100,7 @@ function LoginPage() {
           </Text>
           <Grid
             h="50vh"
-            w={{ base: '71vw', md: '41vw', lg: '27vw' }}
+            w={{ base: '80%', md: '80%', lg: '80%' }}
             justifyContent="space-evenly"
             alignItems="center"
             boxShadow="20px 20px 60px #bebebe,
@@ -110,7 +110,12 @@ function LoginPage() {
             // transform="translateY(-3rem)"
             margin="auto"
           >
-            <Box>
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              flexDirection="column"
+            >
               {/* Login using Google */}
               <Box
                 h="5vh"
@@ -119,8 +124,8 @@ function LoginPage() {
                 alignItems="center"
                 p="0 10px"
                 onClick={LoginUsingGoogle}
-                backgroundColor="beige"
                 fontFamily="Overpass, sans-serif"
+                w="80%"
               >
                 Continue using &nbsp; {<FcGoogle />}
               </Box>
@@ -139,25 +144,28 @@ function LoginPage() {
               </Box>
 
               {/* Login field */}
-              <FormControl isRequired display="grid">
+              <FormControl isRequired w="80%">
                 <Input
                   placeholder="Email"
                   ref={emailRef}
                   size="sm"
                   id="email"
-                  w={{ base: '34vw', md: '34vw', lg: '15vw' }}
+                  // w={{ base: '34vw', md: '34vw', lg: '15vw' }}
+                  w="80%"
                   m="1rem 0"
                 />
                 <Input
+                  w="80%"
                   placeholder="Password"
                   size="sm"
                   ref={passwordRef}
                   id="pass"
                   type="password"
-                  w={{ base: '34vw', md: '34vw', lg: '15vw' }}
+                  // w={{ base: '34vw', md: '34vw', lg: '15vw' }}
                 />
 
                 <Button
+                  w="80%"
                   variant={'outline'}
                   colorScheme="teal"
                   onClick={loginUser}
