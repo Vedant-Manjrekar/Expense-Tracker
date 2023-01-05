@@ -63,9 +63,11 @@ function LoginPage() {
     )
       .then(user => {
         console.log(user);
+        alert('SignIn successfull');
       })
       .catch(error => {
         console.log(error.message);
+        alert(error.message);
       });
   };
 
