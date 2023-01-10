@@ -1,3 +1,8 @@
+import React, { useRef, useContext } from 'react';
+import { ExpenseTrackerContext } from '../context/context';
+import LoginImage from '../assets/money-login.jpeg';
+import { FcGoogle } from 'react-icons/fc';
+import { auth } from '../firebase/firebase';
 import {
   Box,
   Button,
@@ -12,31 +17,25 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  useDisclosure,
+  Text,
 } from '@chakra-ui/react';
-import React, { useRef } from 'react';
-import { useContext } from 'react';
-import { ExpenseTrackerContext } from '../context/context';
-import { Text } from '@chakra-ui/react';
-import LoginImage from '../assets/money-login.jpeg';
-import { FcGoogle } from 'react-icons/fc';
-import { AiFillFacebook } from 'react-icons/ai';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
-import { auth } from '../firebase/firebase';
-import { useDisclosure } from '@chakra-ui/react';
 
 function LoginPage() {
-  const { LoginUsingGoogle, LoginUsingFacebook } = useContext(
-    ExpenseTrackerContext
-  );
+  const { LoginUsingGoogle } = useContext(ExpenseTrackerContext);
 
+  // chakra ui state
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  // reference for email and password.
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
+  // function to sign user up traditionally.
   const signUpUser = event => {
     event.preventDefault();
 
@@ -46,13 +45,14 @@ function LoginPage() {
       passwordRef.current.value
     )
       .then(user => {
-        console.log(user);
+        alert('SignUp Successful');
       })
       .catch(error => {
         alert(error.message);
       });
   };
 
+  // function to log user in.
   const loginUser = event => {
     event.preventDefault();
 
@@ -63,7 +63,7 @@ function LoginPage() {
     )
       .then(user => {
         console.log(user);
-        alert('SignIn successfull');
+        alert('Login successfull');
       })
       .catch(error => {
         console.log(error.message);
@@ -81,13 +81,12 @@ function LoginPage() {
         gridTemplateColumns={{ base: '1fr', md: '1fr', lg: '1fr 1fr' }}
         borderTopLeftRadius="12px"
       >
-        {/* // * Box 1 */}
+        {/*  Box 1 */}
         <Box
           className="b1"
           h="80vh"
           display="grid"
           alignItems={'center'}
-          // flexDirection="column"
           justifyContent="space-around"
           backgroundColor="#f4f6f9"
           w={{ base: '90vw', sm: 'auto', md: '69vw', lg: 'auto' }}
@@ -109,7 +108,6 @@ function LoginPage() {
             -20px -20px 60px #ffffff;"
             borderRadius="50px"
             backgroundColor="whitesmoke"
-            // transform="translateY(-3rem)"
             margin="auto"
           >
             <Box
@@ -212,11 +210,11 @@ function LoginPage() {
                     </ModalBody>
 
                     <ModalFooter>
-                      <Button colorScheme="blue" mr={3} onClick={onClose}>
+                      <Button variant="outline" mr={3} onClick={onClose}>
                         Close
                       </Button>
                       <Button
-                        variant="outline"
+                        colorScheme="green"
                         type="submit"
                         onClick={signUpUser}
                       >

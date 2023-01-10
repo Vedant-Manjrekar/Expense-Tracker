@@ -6,10 +6,9 @@ import { incomeCategory, expenseCategory } from '../constants/constants';
 import formatDate from '../utils/formatDate';
 import { useSpeechContext } from '@speechly/react-client';
 import { deleteDoc, doc, setDoc } from 'firebase/firestore';
-import { db } from '../firebase/firebase';
-import { auth } from '../firebase/firebase';
+import { db, auth } from '../firebase/firebase';
 
-// * Initialstate to avoid undefined error.
+// Initialstate to avoid undefined error.
 const initialState = {
   id: '',
   amount: 0,
@@ -24,6 +23,8 @@ function MainForm() {
 
   // * importing state and function from context.
   const { getData, newinitialState } = useContext(ExpenseTrackerContext);
+
+  // console.log(newinitialState);
 
   // * function to delete all data.
   const deleteCollection = () => {
@@ -71,13 +72,13 @@ function MainForm() {
       // ? type: "category"
       // ? value: "TRAVEL"
 
-      // * Mapping the data from speechly (Voice Input.)
+      // * Mapping the data from speechly (Voice Input.) and capitalising it.
       segment.entities.forEach(entity => {
         const category = `${entity.value.charAt(0)}${entity.value
           .slice(1)
           .toLowerCase()}`;
 
-        // * checking for diiferent entitiy types using switch case and performing a certain function for a certain type.
+        // * checking for diferent entitiy types using switch case and performing a certain function for a certain type.
         switch (entity.type) {
           case 'amount':
             setFormData({ ...formData, amount: Number(entity.value) });
@@ -138,10 +139,7 @@ function MainForm() {
   const selectedCategory =
     formData.type === 'Income' ? incomeCategory : expenseCategory;
 
-  // console.log(formData);
-  // console.log(user);
-
-  // * checking if user loggedout or there is a nee signin, if yes change 'user' state.
+  // * checking if user loggedout or there is a new signin, if yes change 'user' state to the new users email .
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       if (user) {
@@ -162,11 +160,18 @@ function MainForm() {
       ...formData,
       id,
     });
+
+    // resetting formData
     setFormData(initialState);
+
+    // update initialstate using getdata() to reflect changes in app.
     getData(user);
+
+    // emptying amount section.
     document.getElementById('amount').value = '';
   }
 
+  // function for when entering data manually.
   // * Function to add type.
   function addType(e) {
     setFormData({ ...formData, type: e.target.value });
